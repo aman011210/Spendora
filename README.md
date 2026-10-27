@@ -22,6 +22,7 @@ The browser requests expenses, categories, and aggregated analytics from FastAPI
 - Filter by category and inclusive date range; paginated API results.
 - SQL-backed current/previous month totals, category breakdowns, averages, and monthly trends.
 - Responsive dashboard with summary cards, Recharts charts, recent transactions, and clear loading/error/empty states.
+- Amounts are displayed in Indian rupees (INR) throughout the interface, with a matching Spendora SVG favicon.
 - Backend CSV export uses the active category, date, search, and sorting filters.
 - Seeded categories and sample records across six months.
 - Request validation, positive-amount database constraint, foreign key, missing-record 404s, CORS, and pytest API coverage.

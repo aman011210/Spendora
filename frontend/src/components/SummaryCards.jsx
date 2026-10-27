@@ -1,6 +1,5 @@
 import { ArrowDownRight, ArrowUpRight, CreditCard, ReceiptText, Tags, Wallet } from "lucide-react";
-
-const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+import { formatCurrency } from "../utils/currency.js";
 
 export default function SummaryCards({ summary }) {
   const difference = Number(summary.current_month_spending) - Number(summary.previous_month_spending);
@@ -8,9 +7,9 @@ export default function SummaryCards({ summary }) {
     ? (difference / Number(summary.previous_month_spending)) * 100
     : null;
   const cards = [
-    { label: "Spent this month", value: currency.format(summary.current_month_spending), icon: Wallet, hint: change === null ? "Compared with last month" : `${Math.abs(change).toFixed(1)}% ${difference <= 0 ? "less" : "more"} than last month`, tone: difference <= 0 ? "green" : "orange", trend: difference <= 0 ? ArrowDownRight : ArrowUpRight },
-    { label: "Last month", value: currency.format(summary.previous_month_spending), icon: CreditCard, hint: "Previous month total", tone: "blue" },
-    { label: "All expenses", value: summary.expense_count.toLocaleString(), icon: ReceiptText, hint: `Avg. ${currency.format(summary.average_expense)} per expense`, tone: "purple" },
+    { label: "Spent this month", value: formatCurrency(summary.current_month_spending), icon: Wallet, hint: change === null ? "Compared with last month" : `${Math.abs(change).toFixed(1)}% ${difference <= 0 ? "less" : "more"} than last month`, tone: difference <= 0 ? "green" : "orange", trend: difference <= 0 ? ArrowDownRight : ArrowUpRight },
+    { label: "Last month", value: formatCurrency(summary.previous_month_spending), icon: CreditCard, hint: "Previous month total", tone: "blue" },
+    { label: "All expenses", value: summary.expense_count.toLocaleString(), icon: ReceiptText, hint: `Avg. ${formatCurrency(summary.average_expense)} per expense`, tone: "purple" },
     { label: "Top category", value: summary.highest_spending_category || "No data yet", icon: Tags, hint: "Highest total spend", tone: "yellow" },
   ];
 

@@ -14,8 +14,6 @@ import { exportExpenses } from "../components/ExportCSVButton";
 import BrandLogo from "../components/BrandLogo.jsx";
 
 const blankFilters = { search: "", category_id: "", start_date: "", end_date: "", sort_by: "date", sort_order: "desc", page: 1, page_size: 10 };
-const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
-
 export default function Dashboard({ user, onLogout }) {
   const [summary, setSummary] = useState(null);
   const [categoryData, setCategoryData] = useState([]);

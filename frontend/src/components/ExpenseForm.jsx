@@ -30,7 +30,7 @@ export default function ExpenseForm({ expense, categories, onSubmit, onClose, bu
         <form onSubmit={submit}>
           <label className="form-label">Expense title <span>*</span><input name="title" value={form.title} onChange={change} maxLength="120" placeholder="e.g. Weekly groceries" autoFocus required /></label>
           <div className="form-grid">
-            <label className="form-label">Amount <span>*</span><div className="amount-input"><b>$</b><input name="amount" type="number" step="0.01" min="0.01" value={form.amount} onChange={change} placeholder="0.00" required /></div></label>
+            <label className="form-label">Amount (INR) <span>*</span><div className="amount-input"><b>₹</b><input name="amount" type="number" step="0.01" min="0.01" value={form.amount} onChange={change} placeholder="0.00" required /></div></label>
             <label className="form-label">Category <span>*</span><select name="category_id" value={form.category_id} onChange={change} required><option value="" disabled>Select category</option>{categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}</select></label>
           </div>
           <div className="form-grid">

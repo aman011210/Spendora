@@ -1,6 +1,5 @@
 import { ArrowDownLeft, MoreHorizontal, Pencil, Trash2 } from "lucide-react";
-
-const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+import { formatCurrency } from "../utils/currency.js";
 const initials = (title) => title.split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
 
 export default function ExpenseTable({ expenses, onEdit, onDelete, loading }) {
@@ -16,7 +15,7 @@ export default function ExpenseTable({ expenses, onEdit, onDelete, loading }) {
               <td><span className="category-pill">{expense.category_name}</span></td>
               <td className="muted-cell">{new Date(`${expense.expense_date}T00:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</td>
               <td className="muted-cell">{expense.payment_method}</td>
-              <td className="align-right amount-cell">{currency.format(expense.amount)}</td>
+              <td className="align-right amount-cell">{formatCurrency(expense.amount)}</td>
               <td><div className="row-actions"><button title="Edit expense" aria-label={`Edit ${expense.title}`} onClick={() => onEdit(expense)}><Pencil size={15} /></button><button title="Delete expense" aria-label={`Delete ${expense.title}`} className="delete-action" onClick={() => onDelete(expense)}><Trash2 size={15} /></button><MoreHorizontal size={16} className="more-icon" /></div></td>
             </tr>
           ))}
