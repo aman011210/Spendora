@@ -16,7 +16,7 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: FRONTEND_ORIGINS
-        value: https://spendora-portfolio-web.onrender.com
+        value: https://spendora-lp20.onrender.com
       - key: DEMO_USER_USERNAME
         value: andrew
       - key: DEMO_USER_FULL_NAME

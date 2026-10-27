@@ -196,7 +196,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:5173`. Sign in with the Andrew demo credentials configured in `backend/.env`, or create a separate account. The frontend defaults to `http://localhost:8000/api`. To change it, create `frontend/.env.local` with `VITE_API_URL=http://localhost:8000/api` (do not commit local env files).
+Open the URL printed by Vite. Sign in with the Andrew demo credentials configured in `backend/.env`, or create a separate account. The frontend defaults to `http://localhost:8000/api`. To change it, create `frontend/.env.local` with `VITE_API_URL=http://localhost:8000/api` (do not commit local env files). For local frontend development, set `FRONTEND_ORIGINS` in `backend/.env` to the origin printed by Vite.
 
 ### PostgreSQL option
 
@@ -204,17 +204,16 @@ Create a database, install/run PostgreSQL, then set the backend `DATABASE_URL` e
 
 ```powershell
 $env:DATABASE_URL = "postgresql+psycopg://postgres:YOUR_PASSWORD@localhost:5432/expense_tracker"
-$env:FRONTEND_ORIGINS = "http://localhost:5173"
 uvicorn app.main:app --reload
 ```
 
-Keep actual credentials local; never place them in source control. The `psycopg` driver is included in `requirements.txt`.
+For local frontend development, set `FRONTEND_ORIGINS` to the origin printed by Vite. Keep actual credentials local; never place them in source control. The `psycopg` driver is included in `requirements.txt`.
 
 ## Publish a public resume demo on Render
 
 The root [`render.yaml`](./render.yaml) is a Render Blueprint for the FastAPI service, React static site, and managed PostgreSQL database. The site enables public registration and provides a shared editable demo account:
 
-- App: `https://spendora-portfolio-web.onrender.com`
+- App: `https://spendora-lp20.onrender.com/`
 - Demo username: `andrew`
 - Demo password: `SpendoraDemo2026!`
 

@@ -32,7 +32,7 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(title="Expense Tracker with SQL Analytics", version="1.0.0", lifespan=lifespan)
-origins = [origin.strip() for origin in os.getenv("FRONTEND_ORIGINS", "http://localhost:5173").split(",") if origin.strip()]
+origins = [origin.strip() for origin in os.getenv("FRONTEND_ORIGINS", "https://spendora-lp20.onrender.com").split(",") if origin.strip()]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
