@@ -306,6 +306,7 @@ body{background:#f4f6f1;color:#203139}
 .demo-fill-button:hover{text-decoration:underline}
 .auth-footer{display:flex;align-items:center;justify-content:center;gap:5px;color:#91a09c;font-size:9px;margin:20px 0 0}
 .auth-footer svg{color:#69a37e}
+.auth-credit{color:#a1ada9;font-size:9px;text-align:center;margin:10px 0 0}
 .brand-symbol{transition:transform .25s ease}
 .brand:hover .brand-symbol,.auth-brand:hover .brand-symbol{transform:rotate(-5deg) scale(1.04)}
 .button-primary,.nav-item,.panel,.summary-card{transition:background .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}

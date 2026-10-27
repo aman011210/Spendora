@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 
 from app.models import Category, Expense, User
 from app.schemas import ExpenseCreate, ExpenseUpdate
-from app.security import hash_password
+from app.security import hash_password, verify_password
 
 
 def get_category(db: Session, category_id: int) -> Category | None:
@@ -53,18 +53,29 @@ def seed_database(db: Session) -> None:
 
     demo_password = os.getenv("DEMO_USER_PASSWORD", "")
     if len(demo_password) < 8:
-        raise RuntimeError("Set DEMO_USER_PASSWORD (at least 8 characters) to initialize Andrew's demo account.")
+        raise RuntimeError("Set DEMO_USER_PASSWORD (at least 8 characters) to initialize the demo account.")
 
-    demo_username = os.getenv("DEMO_USER_USERNAME", "andrew").strip().lower()
+    demo_username = os.getenv("DEMO_USER_USERNAME", "rehaan").strip().lower()
     demo_user = db.scalar(select(User).where(User.username == demo_username))
     if demo_user is None:
-        demo_user = User(
-            username=demo_username,
-            full_name=os.getenv("DEMO_USER_FULL_NAME", "Andrew"),
-            password_hash=hash_password(demo_password),
-        )
-        db.add(demo_user)
-        db.flush()
+        previous_username = os.getenv("DEMO_USER_PREVIOUS_USERNAME", "").strip().lower()
+        if previous_username and previous_username != demo_username:
+            demo_user = db.scalar(select(User).where(User.username == previous_username))
+
+        if demo_user is None:
+            demo_user = User(
+                username=demo_username,
+                full_name=os.getenv("DEMO_USER_FULL_NAME", "Andrew"),
+                password_hash=hash_password(demo_password),
+            )
+            db.add(demo_user)
+        else:
+            demo_user.username = demo_username
+
+    demo_user.full_name = os.getenv("DEMO_USER_FULL_NAME", demo_user.full_name)
+    if not verify_password(demo_password, demo_user.password_hash):
+        demo_user.password_hash = hash_password(demo_password)
+    db.flush()
 
     db.execute(
         Expense.__table__.update()

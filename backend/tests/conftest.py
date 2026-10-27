@@ -2,6 +2,9 @@ import os
 
 os.environ["DATABASE_URL"] = "sqlite:///./test_expense_tracker.db"
 os.environ["SECRET_KEY"] = "test-only-signing-key-that-is-at-least-32-characters"
+os.environ["DEMO_USER_USERNAME"] = "andrew"
+os.environ["DEMO_USER_FULL_NAME"] = "Andrew"
+os.environ["DEMO_USER_PREVIOUS_USERNAME"] = ""
 os.environ["DEMO_USER_PASSWORD"] = "AndrewTestPassword2026"
 
 import pytest

@@ -18,11 +18,13 @@ services:
       - key: FRONTEND_ORIGINS
         value: https://spendora-lp20.onrender.com
       - key: DEMO_USER_USERNAME
-        value: andrew
+        value: rehaan
       - key: DEMO_USER_FULL_NAME
-        value: Andrew
+        value: Rehaan
+      - key: DEMO_USER_PREVIOUS_USERNAME
+        value: andrew
       - key: DEMO_USER_PASSWORD
-        value: SpendoraDemo2026!
+        value: Rehaan1234
 
   - type: web
     name: spendora-portfolio-web
@@ -36,9 +38,9 @@ services:
       - key: VITE_API_URL
         value: https://spendora-portfolio-api.onrender.com/api
       - key: VITE_DEMO_USERNAME
-        value: andrew
+        value: Rehaan
       - key: VITE_DEMO_PASSWORD
-        value: SpendoraDemo2026!
+        value: Rehaan1234
     routes:
       - type: rewrite
         source: /*

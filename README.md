@@ -128,7 +128,7 @@ Interactive API documentation: `http://localhost:8000/docs`.
 
 ```powershell
 $login = Invoke-RestMethod -Method Post -Uri http://localhost:8000/api/auth/login `
-  -ContentType "application/json" -Body '{"username":"andrew","password":"YOUR_DEMO_PASSWORD"}'
+  -ContentType "application/json" -Body '{"username":"Rehaan","password":"YOUR_DEMO_PASSWORD"}'
 $headers = @{ Authorization = "Bearer $($login.access_token)" }
 
 # Create
@@ -214,10 +214,10 @@ For local frontend development, set `FRONTEND_ORIGINS` to the origin printed by 
 The root [`render.yaml`](./render.yaml) is a Render Blueprint for the FastAPI service, React static site, and managed PostgreSQL database. The site enables public registration and provides a shared editable demo account:
 
 - App: `https://spendora-lp20.onrender.com/`
-- Demo username: `andrew`
-- Demo password: `SpendoraDemo2026!`
+- Demo username: `Rehaan`
+- Demo password: `Rehaan1234`
 
-The demo password is intentionally public and is bundled into the frontend to provide a one-click **Fill demo login** action. Anyone can edit the demo account's data; do not store personal or production data in this account. New signups have independent private data.
+The demo password is intentionally public and is bundled into the frontend to provide a one-click **Fill demo login** action. Anyone can edit the demo account's data; do not store personal or production data in this account. New signups have independent private data. The login/signup page is designed by Amanul Haque.
 
 1. Push this project to a GitHub repository. Ensure `backend/.env`, database files, and other local secrets are not tracked (`.gitignore` excludes them).
 2. Sign in to Render and choose **New → Blueprint**; connect your GitHub repository and select the root `render.yaml`.
@@ -226,7 +226,7 @@ The demo password is intentionally public and is bundled into the frontend to pr
 5. Open the public site URL above, use **Fill demo login**, sign in, and verify the dashboard. Use the actual URLs shown in Render if the suggested service names are unavailable; update `FRONTEND_ORIGINS` and `VITE_API_URL` in the Blueprint and redeploy if Render assigns different URLs.
 6. Add the public app URL to your resume. Keep your hosting account credentials and database connection details private.
 
-The Blueprint uses a generated signing secret in Render, and it does not depend on the local ignored `.env` file. To deploy elsewhere, configure `DATABASE_URL`, `SECRET_KEY` (at least 32 characters), `FRONTEND_ORIGINS`, `DEMO_USER_PASSWORD`, and the frontend build-time `VITE_API_URL`.
+The Blueprint uses a generated signing secret in Render, and it does not depend on the local ignored `.env` file. To deploy elsewhere, configure `DATABASE_URL`, `SECRET_KEY` (at least 32 characters), `FRONTEND_ORIGINS`, `DEMO_USER_USERNAME`, `DEMO_USER_FULL_NAME`, `DEMO_USER_PASSWORD`, and the frontend build-time `VITE_API_URL` plus `VITE_DEMO_USERNAME` and `VITE_DEMO_PASSWORD`.
 
 ## Tests
 

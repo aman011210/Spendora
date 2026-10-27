@@ -40,7 +40,7 @@ export default function AuthPage({ onAuthenticated }) {
             <p>A calmer way to understand your spending, build good habits, and make your next move count.</p>
             <div className="story-insight"><span className="insight-icon"><ChartNoAxesCombined size={18} /></span><span><strong>See the whole picture</strong><small>Real-time insights, shaped around you.</small></span><span className="insight-spark">↗</span></div>
           </div>
-          <div className="story-footer"><ShieldCheck size={15} /> Private by design <span>·</span> Yours alone</div>
+          <div className="story-footer">Design by ❤️ <span>·</span> Yours Amanul</div>
           <div className="story-orbit story-orbit-one" /><div className="story-orbit story-orbit-two" />
         </section>
         <section className="auth-card">
@@ -49,14 +49,15 @@ export default function AuthPage({ onAuthenticated }) {
           <p className="auth-subtitle">{registering ? "Your own private space for smarter spending." : "Sign in to pick up where you left off."}</p>
           <form className="auth-form" onSubmit={submit}>
             {registering && <label className="form-label">Full name<input required minLength="1" maxLength="100" autoComplete="name" value={form.full_name} onChange={(event) => setForm({ ...form, full_name: event.target.value })} placeholder="Your name" /></label>}
-            <label className="form-label">Username<input required minLength="3" maxLength="50" autoComplete="username" value={form.username} onChange={(event) => setForm({ ...form, username: event.target.value })} placeholder={registering ? "Choose a username" : "andrew"} /></label>
+            <label className="form-label">Username<input required minLength="3" maxLength="50" autoComplete="username" value={form.username} onChange={(event) => setForm({ ...form, username: event.target.value })} placeholder={registering ? "Choose a username" : "Your username"} /></label>
             <label className="form-label">Password<input required minLength={registering ? 8 : 1} maxLength="128" type="password" autoComplete={registering ? "new-password" : "current-password"} value={form.password} onChange={(event) => setForm({ ...form, password: event.target.value })} placeholder={registering ? "At least 8 characters" : "Your password"} /></label>
             {error && <div className="form-error" role="alert">{error}</div>}
             <button type="submit" className="button button-primary auth-submit" disabled={busy}>{busy ? "Please wait..." : registering ? "Create account" : "Sign in"}<ArrowRight size={16} /></button>
           </form>
           <div className="auth-switch">{registering ? "Already have an account?" : "New to Spendora?"}<button onClick={() => { setRegistering(!registering); setError(""); }}> {registering ? "Sign in" : "Create an account"}</button></div>
-          {!registering && demoPassword && <div className="demo-hint"><strong>Exploring the demo?</strong><span>Use the shared demo account. Demo records are public and editable.</span><button type="button" className="demo-fill-button" onClick={() => setForm((current) => ({ ...current, username: demoUsername || "andrew", password: demoPassword }))}>Fill demo login</button></div>}
+          {!registering && demoPassword && <div className="demo-hint"><strong>Exploring the demo?</strong><span>Use the shared demo account. Demo records are public and editable.</span><button type="button" className="demo-fill-button" onClick={() => setForm((current) => ({ ...current, username: demoUsername, password: demoPassword }))}>Fill demo login</button></div>}
           <p className="auth-footer"><ShieldCheck size={13} /> Your account and spending data stay private.</p>
+          <p className="auth-credit">Designed by Amanul Haque</p>
         </section>
       </div>
     </main>
