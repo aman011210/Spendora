@@ -16,7 +16,7 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: FRONTEND_ORIGINS
-        value: https://spendora-lp20.onrender.com
+        value: https://spendora-portfolio-web.onrender.com
       - key: DEMO_USER_USERNAME
         value: rehaan
       - key: DEMO_USER_FULL_NAME
@@ -36,7 +36,7 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
-        value: https://spendora-portfolio-api.onrender.com/api
+        value: https://spendora-lp20.onrender.com/api
       - key: VITE_DEMO_USERNAME
         value: Rehaan
       - key: VITE_DEMO_PASSWORD

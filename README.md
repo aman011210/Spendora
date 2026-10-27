@@ -213,7 +213,8 @@ For local frontend development, set `FRONTEND_ORIGINS` to the origin printed by 
 
 The root [`render.yaml`](./render.yaml) is a Render Blueprint for the FastAPI service, React static site, and managed PostgreSQL database. The site enables public registration and provides a shared editable demo account:
 
-- App: `https://spendora-lp20.onrender.com/`
+- App: `https://spendora-portfolio-web.onrender.com/`
+- API: `https://spendora-lp20.onrender.com`
 - Demo username: `Rehaan`
 - Demo password: `Rehaan1234`
 
@@ -223,7 +224,7 @@ The demo password is intentionally public and is bundled into the frontend to pr
 2. Sign in to Render and choose **New → Blueprint**; connect your GitHub repository and select the root `render.yaml`.
 3. Review the resources before confirming: the API and static site are configured on free plans; the persistent PostgreSQL database uses `basic-256mb`, which is a paid plan. Confirm the current price in Render before provisioning. Free API instances may spin down while idle, causing a delay on the first request.
 4. Wait for the database, API, and site deploys. The blueprint configures the API URL, CORS allowlist, health check, and database connection automatically.
-5. Open the public site URL above, use **Fill demo login**, sign in, and verify the dashboard. Use the actual URLs shown in Render if the suggested service names are unavailable; update `FRONTEND_ORIGINS` and `VITE_API_URL` in the Blueprint and redeploy if Render assigns different URLs.
+5. Open the public site URL above, use **Fill demo login**, sign in, and verify the dashboard. The API is hosted at `https://spendora-lp20.onrender.com`. Use the actual URLs shown in Render if the suggested service names are unavailable; update `FRONTEND_ORIGINS` and `VITE_API_URL` in the Blueprint and redeploy if Render assigns different URLs.
 6. Add the public app URL to your resume. Keep your hosting account credentials and database connection details private.
 
 The Blueprint uses a generated signing secret in Render, and it does not depend on the local ignored `.env` file. To deploy elsewhere, configure `DATABASE_URL`, `SECRET_KEY` (at least 32 characters), `FRONTEND_ORIGINS`, `DEMO_USER_USERNAME`, `DEMO_USER_FULL_NAME`, `DEMO_USER_PASSWORD`, and the frontend build-time `VITE_API_URL` plus `VITE_DEMO_USERNAME` and `VITE_DEMO_PASSWORD`.
